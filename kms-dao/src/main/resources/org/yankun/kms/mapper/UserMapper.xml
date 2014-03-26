@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.yankun.kms.dao.user.UserMapper">
+	<resultMap type="User" id="userResult">  
+        <id property="id" column="ID" javaType="int" jdbcType="INTEGER"/>  
+        <result property="username" column="USERNAME"/>  
+        <result property="email" column="EMAIL"/>  
+        <result property="password" column="PASSWORD"/>  
+    </resultMap>
+
+	<!--  新增记录  -->
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into user(title,content,owner) values(#{title},#{content},#{owner})
+    </insert>
+	<!--  查询单条记录  -->
+    <select id="select" parameterType="long" resultMap="userResult">
+       select * from user where id = #{id}
+    </select>
+	<!--  修改记录  -->
+    <update id="update" parameterType="User">
+        update user set title = #{title},content = #{content},owner = #{owner} where id = 1
+    </update>
+	<!--  查询所有记录  -->
+    <select id="selectAll" resultType="User">
+        select * from t_blog
+    </select>
+	<!--  删除记录  -->
+    <delete id="delete" parameterType="long">
+       delete from t_blog where id =1
+    </delete>
+</mapper>
