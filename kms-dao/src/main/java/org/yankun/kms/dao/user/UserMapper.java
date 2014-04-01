@@ -9,7 +9,7 @@ import org.yankun.kms.entity.user.User;
 public interface UserMapper {
 
 	User select(long id);
-	User insert(User user);
+	long insert(User user);
 	User update(User user);
 	void delete(long id);
 	List<User> selectAll();

@@ -4,6 +4,10 @@
 package org.yankun.kms.entity.user;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import org.hibernate.validator.constraints.Email;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author yankun
@@ -35,7 +39,18 @@ public class User implements Serializable {
 	/**
 	 * Email
 	 */
+	@Email
 	private String email;
+	/**
+	 * Create Time
+	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	private Date createTime;
+	/**
+	 * Update Time
+	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	private Date updateTime;
 	public Serializable getId() {
 		return id;
 	}
@@ -66,6 +81,17 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 	
-
 }
